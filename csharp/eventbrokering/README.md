@@ -22,11 +22,18 @@ flowchart TD
 The following are the highlighted parts of the AppKit that we believe could save you some time during implementation
 
 ### IMessageBroker with Kafka implementation
-The AppKit includes message broker interfaces, with implementations for Kafka, but that can easilly be implemented to a different message broker. 
+The AppKit includes message broker interfaces, with implementations for Kafka, but that can easilly be implemented to a different message broker. The kafka broker uses a custom delegate `AsyncEventHandler` in order to ***await*** processing. There is also retry policy implemented under the hood as well as a factory for creating new consumers.
 
-### Flow sequence
-At the core of this implementation is a flow that runs between the message broker and "CommandProcessors". The sequence of events is roughly:
 
+### Understanding how public messages are handled over the broker
+At the core of this implementation is a flow that runs between the message broker and "CommandProcessors". There are three actors involved: 
+| Actor | Responsability |
+| ------| -------------- |
+| MessageConsumer | The code that consumes public messages from the event broker |
+| PublicMessageHandler | The code that inspects the public message, and finds matching processors |
+| PublicMessageProcessor | The code that actually does something to the Public message, i.e. `OrderDeletedProcessor` |
+
+Here is a rought sequence diagram: 
 
 ```mermaid
 sequenceDiagram
@@ -35,8 +42,9 @@ sequenceDiagram
     participant C as IPublicMessageProcessor
     A->>B: MessageReceived (async)
     activate B
-    B->>B: Identify processor    
-    B->>C: Process (Message)
+    B->>B: 
+    note right of B: Identify all IPublicMessageProcessor instances
+    B->>C: Invoke Process(Message) on all processors
     activate C
     note right of C: Process the message
     C->>B: Completed (true | false)
@@ -50,13 +58,17 @@ The message processors each follow a pattern where they are set up to respond to
 public interface IPublicMessageProcessor
 {
     /// <summary>
-    /// The MessageType for which this processor was made, i.e. 'UpsertQuay'
+    /// The MessageType for which this processor was made, i.e. 'UpsertOrder'
     /// </summary>
     string ForMessageType { get; }
+
+    ///<summary>
+    /// The actual processing of the public message
+    ///</summary>
     Task<bool> ProcessMessage(PublicMessage publicMessage);
 }
 ```
-
+Each microservice can have zero, one or several PublicMessageProcessors, depending on your needs. This is why the implementation of the IPublicMessageHandler receives a dictionary of Processors in its constructor, so that each processor can execute against a recognized message. The messages are attached to the processors via the property `ForMessageType`. There must be an exact match for this processor to engage with the message. Future variants could allow for regular expressions, or for handling more than one type of message.
 
 ----
 
