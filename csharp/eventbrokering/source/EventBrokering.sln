@@ -1,27 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32414.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{2487A236-71B2-49CC-B076-861B2D968D69}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 - Configuration", "10 - Configuration", "{2487A236-71B2-49CC-B076-861B2D968D69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{0BA2A155-C3B8-4BBB-9D50-6D2169B7EC83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configuration", "Configuration\Configuration.csproj", "{0BA2A155-C3B8-4BBB-9D50-6D2169B7EC83}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Brokers", "Brokers", "{CEDA0A56-892A-4152-834E-C499745DAE64}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30 - Brokers", "30 - Brokers", "{CEDA0A56-892A-4152-834E-C499745DAE64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brokers", "Brokers\Brokers.csproj", "{6F90C0EA-F8C5-4356-8522-3DAF0A6AD985}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brokers", "Brokers\Brokers.csproj", "{6F90C0EA-F8C5-4356-8522-3DAF0A6AD985}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{8BB22C8D-319D-40E9-A7B6-2E31A9483736}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 - Common", "20 - Common", "{8BB22C8D-319D-40E9-A7B6-2E31A9483736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{D256C59E-C3DF-4CEF-9DD8-D7E4AF70C3F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{D256C59E-C3DF-4CEF-9DD8-D7E4AF70C3F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Microservices", "00 - Microservices", "{5F75769E-F1B8-44DD-AA7D-27ABFA51B15A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample.Orders", "Sample.Orders", "{FBC5A8AD-CEAA-43A3-9C2B-965B380FF9CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Orders", "Microservices\Sample.Orders\Sample.Orders.csproj", "{AF697B8B-C69F-43E3-89EB-52F08A928D2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0BA2A155-C3B8-4BBB-9D50-6D2169B7EC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,10 +39,22 @@ Global
 		{D256C59E-C3DF-4CEF-9DD8-D7E4AF70C3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D256C59E-C3DF-4CEF-9DD8-D7E4AF70C3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D256C59E-C3DF-4CEF-9DD8-D7E4AF70C3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF697B8B-C69F-43E3-89EB-52F08A928D2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF697B8B-C69F-43E3-89EB-52F08A928D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF697B8B-C69F-43E3-89EB-52F08A928D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF697B8B-C69F-43E3-89EB-52F08A928D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0BA2A155-C3B8-4BBB-9D50-6D2169B7EC83} = {2487A236-71B2-49CC-B076-861B2D968D69}
 		{6F90C0EA-F8C5-4356-8522-3DAF0A6AD985} = {CEDA0A56-892A-4152-834E-C499745DAE64}
 		{D256C59E-C3DF-4CEF-9DD8-D7E4AF70C3F3} = {8BB22C8D-319D-40E9-A7B6-2E31A9483736}
+		{FBC5A8AD-CEAA-43A3-9C2B-965B380FF9CD} = {5F75769E-F1B8-44DD-AA7D-27ABFA51B15A}
+		{AF697B8B-C69F-43E3-89EB-52F08A928D2C} = {FBC5A8AD-CEAA-43A3-9C2B-965B380FF9CD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B202E9EC-6646-4868-9145-B1B9E99174A6}
 	EndGlobalSection
 EndGlobal
