@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Common.Rejections
 {
-    public record Rejection : INotification, IEntity
+    public class Rejection : INotification, IEntity
     {
         public string? Id { get; init; }
         public bool Rejected { get; set; }
@@ -15,5 +15,12 @@ namespace Common.Rejections
         public string? RejectionReason { get; set; }
         public object? FailingObject { get; set; }
         public bool? IsSynchronized { get; set; }
+
+        public Rejection()
+        {
+            Id = Guid.NewGuid().ToString();
+            Rejected = false;
+            IsSynchronized = true;
+        }
     }
 }

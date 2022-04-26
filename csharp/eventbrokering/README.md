@@ -22,7 +22,7 @@ flowchart TD
 The following are the highlighted parts of the AppKit that we believe could save you some time during implementation
 
 ### IMessageBroker with Kafka implementation
-The AppKit includes message broker interfaces, with implementations for Kafka, but that can easilly be implemented to a different message broker. The kafka broker uses a custom delegate `AsyncEventHandler` in order to ***await*** processing. There is also retry policy implemented under the hood as well as a factory for creating new consumers.
+The AppKit includes message broker interfaces, with implementations for Kafka that can easilly be implemented to a different message broker. The kafka broker uses a custom delegate `AsyncEventHandler` in order to ***await*** processing. There is also retry policy implemented under the hood as well as a factory for creating new consumers.
 
 
 ### Understanding how public messages are handled over the broker
@@ -72,16 +72,84 @@ Each microservice can have zero, one or several PublicMessageProcessors, dependi
 
 ----
 
+## Configuration
+
+### Secret files
+The solution depends on being able to read a specific format of configuration coming from the .Net "User Secret Files" concept.
+Each of the bounded context microservices will this have an entry in their `.csproj` file pointing to a secret file. 
+> **Important**<br  />
+> Point to the same user secret file from each microservice that you define. This way, you get to keep your secrets gathered
+> in one location, as they are largely the same for all projects.
+
+Sample `.csproj` file from the Sample.Orders project: 
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+	<TargetFramework>net6.0</TargetFramework>
+	<Nullable>enable</Nullable>
+	<ImplicitUsings>enable</ImplicitUsings>
+	  <UserSecretsId>aspnet-Demo-9C343B54-7580-4ABD-BFDC-14D782C5E26A</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\..\Brokers\Brokers.csproj" />
+	<ProjectReference Include="..\..\Common\Common.csproj" />
+	<ProjectReference Include="..\..\Configuration\Configuration.csproj" />
+  </ItemGroup>
+
+</Project>
+```
+### Contents required from the secrets file: 
+
+```json
+{
+  "Kestrel:Certificates:Development:Password": "5211002b-92f1-4972-96a2-143ec0163d3d",
+  "Kafka": {
+    "GroupId": "demo-devs-devname",
+    "BrokerUrl": "",
+    "Username": "",
+    "InputTopic": "",
+    "CommandTopic": "",
+    "ReceiptsTopic": "",
+    "Ssl": {
+      "Authority": "C:\\Users\\pedro\\OneDrive\\Documents\\Dolittle\\Projects\\DEMO\\dev_ca.pem",
+      "Certificate": "C:\\Users\\pedro\\OneDrive\\Documents\\Dolittle\\Projects\\DEMO\\dev_certificate.pem",
+      "Key": "C:\\Users\\pedro\\OneDrive\\Documents\\Dolittle\\Projects\\DEMO\\dev_accessKey.pem"
+    }
+  },
+  "ApiKey": "BigBadBanana1306",
+  "AzureAd": {
+    "Instance": "https://login.microsoft.com/",
+    "Domain": "",
+    "TenantId": "",
+    "ClientId": "",
+    "ClientSecret": "",
+    "CallbackPath": "/signin-oidc",
+    "SignedOutCallbackPath": "/signout-callback-oidc"
+  },
+  "Microservices": {
+    "redis": "localhost:7013",
+    "orders": "localhost:55548"
+  },
+  "IGNORE_MESSAGETYPES": "BadMonkey"
+}
+```
+*description needed for the secrets file, what is required, what is optional etc*
+
+----
+
+
 ## Versions / Dependencies
 This template builds on the following components and versions
 
-| Area                 | Technology | Library      | Version | Comments | 
+| Concern              | Technology | Library      | Version | Comments | 
 | -------------------- | ---------- | ------------ | ------- | -------- |
 | Framework            | .Net       | -            | 6.0     | -        | 
 | Language             | C#         | -            | 10.0    | -        | 
 | Message Broker       | Kafka      | Confluent    | 1.8.2   | -        |
 | Frontend/API         | GraphQL    | HotChocolate | 12.7    | -        |
 | Inversion of Control | IoC        | Lamar        | 7.0.0   | -        | 
+| Logging              | -          | Serilog      | 2.10.0  | -        |
 
 ## Installing
 Ensure that your .Net version is up to the required version in the table above, or higher, then simply apply the command: 

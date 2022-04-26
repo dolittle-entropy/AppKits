@@ -1,0 +1,30 @@
+{
+  "7dfe4251-678b-4cc1-bee5-d29e28972374": {
+    "eventStore": {
+      "servers": [
+        "mongo"
+      ],
+      "database": "Demo_Orders",
+      "maxConnectionPoolSize": 8000
+    },
+    "projections": {
+      "servers": [
+        "mongo"
+      ],
+      "database": "Demo_Orders_Projections",
+      "maxConnectionPoolSize": 8000
+    },
+    "embeddings": {
+      "servers": [
+        "mongo"
+      ],
+      "database": "Demo_Orders_Embeddings",
+      "maxConnectionPoolSize": 8000
+    },
+    "readModels": {
+      "host":"mongodb://mongo:27017",
+      "database": "DB_TeamPlanning",
+      "useSSL": false
+    }
+  }
+}

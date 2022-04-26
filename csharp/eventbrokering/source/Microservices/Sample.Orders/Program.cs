@@ -1,6 +1,30 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Configuration;
+using Dolittle.SDK;
+using Lamar.Microsoft.DependencyInjection;
+using Sample.Orders;
+using Serilog;
+using System.Reflection;
 
-app.MapGet("/", () => "Hello World!");
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Log.Logger = ConfigureAppExtensions.CreateMicroserviceLogger(enableDolittleDiagnostics: true);
+        CreateHostBuilder(args).Build().Run();
+    }
 
-app.Run();
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .UseLamar()
+            .UseSerilog()
+            .UseDolittle()
+
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureAppConfiguration(config => config
+                        .AddUserSecrets(Assembly.GetEntryAssembly(), optional: true)
+                        .AddEnvironmentVariables()
+                );
+                webBuilder.UseStartup<Startup>();
+            });
+}

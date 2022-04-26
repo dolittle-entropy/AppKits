@@ -50,18 +50,30 @@ public static class ConfigurationExtensions
         return services;
     }
 
-    public static IRequestExecutorBuilder ConfigureGraphQL(this ServiceRegistry services, bool enableAuthentication)
+    public static IRequestExecutorBuilder ConfigureGraphQL(this ServiceRegistry services, bool enableAuthentication, bool enableRedisGateway = true)
     {
         // Add a connection to our Redis server
-        var redisConnectionString = _configuration!.GetSection("Microservices")["redis"];
-        Log.Information($"Redis instance in use: {redisConnectionString}");
-        services.AddSingleton(ConnectionMultiplexer.Connect(redisConnectionString));
+        if(enableRedisGateway)
+        {
+            var redisConnectionString = _configuration!.GetSection("Microservices")["redis"];
+            Log.Information($"Redis instance in use: {redisConnectionString}");
+            services.AddSingleton(ConnectionMultiplexer.Connect(redisConnectionString));
+        }
 
         var builder = services.AddGraphQLServer();
 
         if (enableAuthentication)
         {
             builder.AddAuthorization();
+        }
+
+        if(enableRedisGateway)
+        {
+            builder.AddRedisSubscriptions(sp => sp.GetRequiredService<ConnectionMultiplexer>());
+        }
+        else
+        {
+            builder.AddInMemorySubscriptions();
         }
 
         return builder
@@ -71,8 +83,7 @@ public static class ConfigurationExtensions
             .AddMongoDbProjections()
             .AddMongoDbPagingProviders()
 
-            .AddDefaultTransactionScopeHandler()
-            .AddRedisSubscriptions(sp => sp.GetRequiredService<ConnectionMultiplexer>())
+            .AddDefaultTransactionScopeHandler()            
 
             .AddProjections()
             .AddSorting()
