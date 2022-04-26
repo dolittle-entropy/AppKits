@@ -1,10 +1,10 @@
 ﻿using Common.GraphQL;
 using Common.Models;
 
-namespace Common.Processing
+namespace Common.Commands
 {
     public interface ICommandProcessor<TCommand>
-    where TCommand : ICommand<IEntity>
+        where TCommand : ICommand<IEntity>
     {
         Task<bool> Process(TCommand command, CancellationToken cancellationToken = default);
 

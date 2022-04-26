@@ -1,5 +1,7 @@
-﻿using Common.Models;
+﻿using Common.Extensions;
+using Common.Models;
 using Common.Processing;
+using Serilog;
 
 namespace Common.Messaging
 {
@@ -7,6 +9,7 @@ namespace Common.Messaging
 
     public class PublicMessageHandler : IPublicMessageHandler
     {
+        readonly ILogger _log;
         readonly List<Guid> _approvedTenants;        
         private readonly IMessageConsumer _messageConsumer;
         private readonly IReceiptConsumer _receiptConsumer;
@@ -20,9 +23,11 @@ namespace Common.Messaging
             Dictionary<string, IPublicMessageProcessor> processors,
             Dictionary<string, IReceiptProcessor> receiptProcessors)
         {
-            _approvedTenants = approvedTenants;
+            _log = Log.ForContext<PublicMessageHandler>();
+
             _messageConsumer = messageConsumer;
             _receiptConsumer = receiptConsumer;
+            _approvedTenants = approvedTenants;
             _processors = processors;
             _receiptProcessors = receiptProcessors;
         }
@@ -43,13 +48,22 @@ namespace Common.Messaging
         {
             var messageType = message.Command;
             if (string.IsNullOrEmpty(messageType))
+            {
+                _log.Warn(this, $"Received a receipt with an empty command");
                 return;
+            }
 
             if (_receiptProcessors.ContainsKey(messageType) && _receiptProcessors[messageType] is { } processor)
             {
                 var success = await processor
                     .ProcessReceipt(message, cancellationToken)
                     .ConfigureAwait(false);
+
+                if (success)
+                    _log.Leave(this, $"Completed processing receipt for {messageType}: '{message.CorrelationId}'");
+                else
+                    _log.Fail(this, $"Failed to process receipt for {messageType}: '{message.CorrelationId}'");
+
             }
         }
 
@@ -58,21 +72,32 @@ namespace Common.Messaging
             var tenant = message.GetTenantId();
 
             if (message is null)
+            {
+                _log.Warn(this, $"Received a receipt with an empty command");
                 return;
-
-            var messageType = message.Metadata!.MessageType!;
+            }
 
             if (tenant == Guid.Empty)
+            {
+                _log.Warn(this, $"No tenancy in message. Will not process\n");
                 return;
+            }
 
             if (!_approvedTenants.Contains(tenant))
+            {
+                _log.Warn(this, $"Tenant {tenant} is not recognized. Will not process\n\n");
                 return;
+            }
+
+            var messageType = message.Metadata!.MessageType!;
 
             if (_processors.ContainsKey(messageType))
             {
                 var success = await _processors[messageType!]
                     .ProcessMessage(message!)
                     .ConfigureAwait(false);
+
+                _log.Leave(this, $"Completed processing Message: '{message.Metadata?.MessageType}'");
             }
         }
     }

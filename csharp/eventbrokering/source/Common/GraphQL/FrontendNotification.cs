@@ -44,14 +44,6 @@ public static class FrontendNotificationExtensions
         return notification;
     }
 
-    public static FrontendNotification WithFacilityId(this FrontendNotification notification, string facilityId)
-    {
-        notification.Scope = FrontendNotificationScope.Facility;
-        notification.Recipient = facilityId;
-
-        return notification;
-    }
-
     public static FrontendNotification WithUserId(this FrontendNotification notification, string userId)
     {
         notification.Scope = FrontendNotificationScope.User;
@@ -71,7 +63,7 @@ public static class FrontendNotificationExtensions
 
 public enum FrontendNotificationScope
 {
-    Unknown, User, Facility, Everyone
+    Unknown, User, Everyone
 }
 
 public enum FrontendNotificationType

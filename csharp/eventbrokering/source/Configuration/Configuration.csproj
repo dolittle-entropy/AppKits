@@ -1,9 +1,53 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>10</LangVersion>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Serilog" Version="2.10.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Lamar" Version="7.0.0" />
+		<PackageReference Include="Lamar.Microsoft.DependencyInjection" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="HotChocolate.AspNetCore" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Data" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Execution" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Abstractions" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Data.MongoDb" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Types" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Stitching" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Stitching.Redis" Version="12.6.0" />
+		<PackageReference Include="HotChocolate.Subscriptions.Redis" Version="12.6.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Brokers\Brokers.csproj" />
+	  <ProjectReference Include="..\Common\Common.csproj" />
+	</ItemGroup>
 
 </Project>

@@ -1,8 +1,10 @@
 ﻿using Common.Models;
 
-namespace Common.Processing
+namespace Common.Commands
 {
-    public interface ICommand<out TEntity> where TEntity : IEntity
+
+    public interface ICommand<out TEntity>
+        where TEntity : IEntity
     {
         /// <summary>
         /// The id of the Tenant that this command was issued for
