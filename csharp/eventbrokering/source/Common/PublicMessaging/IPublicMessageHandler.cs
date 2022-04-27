@@ -1,4 +1,4 @@
-﻿namespace Common.Messaging
+﻿namespace Common.PublicMessaging
 {
     public interface IPublicMessageHandler
     {

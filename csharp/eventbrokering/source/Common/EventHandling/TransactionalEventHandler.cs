@@ -1,8 +1,8 @@
 ﻿using Common.Exceptions;
 using Common.GraphQL;
 using Common.Helpers;
-using Common.Messaging;
 using Common.Models;
+using Common.PublicMessaging;
 using Common.Repositories;
 using Dolittle.SDK.Events;
 using Serilog;

@@ -1,6 +1,6 @@
 ﻿using Common.Extensions;
-using Common.Messaging;
 using Common.Models;
+using Common.PublicMessaging;
 using Confluent.Kafka;
 using Microsoft.Extensions.Configuration;
 using Serilog;

@@ -1,4 +1,4 @@
-﻿using Common.Messaging;
+﻿using Common.PublicMessaging;
 using Dolittle.SDK;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

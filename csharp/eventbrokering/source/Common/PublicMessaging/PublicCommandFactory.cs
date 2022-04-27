@@ -1,7 +1,7 @@
 ﻿using Common.Commands;
 using Common.Models;
 
-namespace Common.Messaging;
+namespace Common.PublicMessaging;
 
 public static class PublicCommandFactory
 {

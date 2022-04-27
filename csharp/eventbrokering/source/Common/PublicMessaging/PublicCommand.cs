@@ -1,10 +1,10 @@
 ﻿using Common.Models;
 using System;
 
-namespace Common.Messaging;
+namespace Common.PublicMessaging;
 
 public record PublicCommand
-{    
+{
     public Metadata? Metadata { get; set; }
 
     public Guid TraceId { get; set; }

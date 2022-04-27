@@ -3,14 +3,14 @@ using Common.Models;
 using Common.Processing;
 using Serilog;
 
-namespace Common.Messaging
+namespace Common.PublicMessaging
 {
     public delegate Task AsyncEventHandler<TEventArgs>(object? sender, TEventArgs e);
 
     public class PublicMessageHandler : IPublicMessageHandler
     {
         readonly ILogger _log;
-        readonly List<Guid> _approvedTenants;        
+        readonly List<Guid> _approvedTenants;
         private readonly IMessageConsumer _messageConsumer;
         private readonly IReceiptConsumer _receiptConsumer;
         private readonly Dictionary<string, IPublicMessageProcessor> _processors;

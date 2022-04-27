@@ -1,4 +1,4 @@
-﻿using Common.Messaging;
+﻿using Common.PublicMessaging;
 using Confluent.Kafka;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;

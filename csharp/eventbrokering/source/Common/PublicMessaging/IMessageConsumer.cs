@@ -1,6 +1,6 @@
 ﻿using Common.Models;
 
-namespace Common.Messaging
+namespace Common.PublicMessaging
 {
     public interface IMessageConsumer
     {

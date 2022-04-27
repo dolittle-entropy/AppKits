@@ -1,9 +1,9 @@
 ﻿using Brokers;
 using Common.Commands;
 using Common.GraphQL;
-using Common.Messaging;
 using Common.Models;
 using Common.Processing;
+using Common.PublicMessaging;
 using Common.Rejections;
 using Common.Repositories;
 using Common.Validation;
