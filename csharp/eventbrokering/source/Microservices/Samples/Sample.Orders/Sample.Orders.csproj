@@ -10,9 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-	<ProjectReference Include="..\..\Brokers\Brokers.csproj" />
-	<ProjectReference Include="..\..\Common\Common.csproj" />
-	<ProjectReference Include="..\..\Configuration\Configuration.csproj" />
+	<ProjectReference Include="..\..\..\Brokers\Brokers.csproj" />
+	<ProjectReference Include="..\..\..\Common\Common.csproj" />
+	<ProjectReference Include="..\..\..\Configuration\Configuration.csproj" />
   </ItemGroup>
 
 </Project>

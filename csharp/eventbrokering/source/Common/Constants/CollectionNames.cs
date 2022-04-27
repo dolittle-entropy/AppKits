@@ -13,6 +13,9 @@
         public const string OrderLines = nameof(OrderLines);
         public const string OrderTypes = nameof(OrderTypes);
 
+        // Products
+        public const string Products = nameof(Products);
+
         // Rejections
         public const string Rejections = nameof(Rejections);
 

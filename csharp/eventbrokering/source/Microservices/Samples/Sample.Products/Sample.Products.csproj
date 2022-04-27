@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>aspnet-Demo-9C343B54-7580-4ABD-BFDC-14D782C5E26A</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Brokers\Brokers.csproj" />
+	  <ProjectReference Include="..\..\..\Common\Common.csproj" />
+	  <ProjectReference Include="..\..\..\Configuration\Configuration.csproj" />
+	</ItemGroup>
+
+</Project>

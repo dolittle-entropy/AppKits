@@ -23,6 +23,7 @@ public class Program
             {
                 webBuilder.ConfigureAppConfiguration(config => config
                         .AddUserSecrets(Assembly.GetEntryAssembly(), optional: true)
+                        .AddJsonFile("appsettings.json", optional: true)
                         .AddEnvironmentVariables()
                 );
                 webBuilder.UseStartup<Startup>();
