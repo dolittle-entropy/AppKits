@@ -38,5 +38,22 @@ namespace Sample.Orders.GraphQL
             };
             return await processor.Process(command, token);
         }
+
+        public async Task<bool> DeleteOrder(Guid orderId, string issuedBy, [Service] DeleteOrderProcessor processor, CancellationToken token = default)
+        {
+            _log.Enter(this, $"{nameof(OrderMutations)}.{nameof(DeleteOrder)}() invoked by {issuedBy ?? "unknown"}");
+
+            if(await _orders.GetOne(order => order.Id == orderId, token) is Order existingOrder)
+            {
+                var command = new DeleteOrder
+                {
+                    TenantId = _dolittleClient.Tenants.First().Id,
+                    IssuedBy = issuedBy,
+                    Payload  = existingOrder
+                };
+                return await processor.Process(command, token);
+            }
+            return false;
+        }
     }
 }

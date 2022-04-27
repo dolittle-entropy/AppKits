@@ -13,6 +13,11 @@ namespace Configuration
 {
     public static class ConfigureAppExtensions
     {
+        /// <summary>
+        /// Configures logging defaults for the microservice.
+        /// </summary>
+        /// <param name="enableDolittleDiagnostics">Toggle for enabling or disabling detailed logs from the Dolittle SDK. Default is off</param>
+        /// <returns>A Serilog.ILogger instance</returns>
         public static ILogger CreateMicroserviceLogger(bool enableDolittleDiagnostics = false)
         {
             var loggerConfiguration = new LoggerConfiguration()

@@ -9,7 +9,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Log.Logger = ConfigureAppExtensions.CreateMicroserviceLogger(enableDolittleDiagnostics: true);
+        Log.Logger = ConfigureAppExtensions.CreateMicroserviceLogger(enableDolittleDiagnostics: false);
         CreateHostBuilder(args).Build().Run();
     }
 

@@ -27,9 +27,23 @@ namespace Sample.Orders.Orders
             }
         }
 
+        public void Process(DeleteOrder command)
+        {
+            if (_currentOrder is null && _isDeleted)
+                return;
+
+            Apply(new OrderDeleted(command.Payload!.Id, command.IssuedBy!));
+        }
+
         void On(OrderCreated evt)
         {
             _currentOrder = evt.NewOrder;
+        }
+
+        void On(OrderDeleted evt)
+        {
+            _isDeleted = true;
+            _currentOrder = null;
         }
     }
 }

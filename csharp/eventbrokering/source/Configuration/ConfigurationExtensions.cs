@@ -23,9 +23,20 @@ using StackExchange.Redis;
 
 namespace Configuration;
 
+/// <summary>
+/// Configuration Extensions for setting up your EDA-based Microservice quickly
+/// </summary>
 public static class ConfigurationExtensions
 {
     private static IConfiguration? _configuration;
+
+    /// <summary>
+    /// Entry point for setting up a microservice. 
+    /// </summary>
+    /// <param name="services">The extended Services object, based on Lamar</param>
+    /// <param name="configuration">IConfiguration to pass</param>
+    /// <param name="enableAuthentication">Toggles authentication</param>
+    /// <param name="enableMessageBroker">Toggles the use of a message broker in your microservice</param>
 
     public static ServiceRegistry ConfigureMicroservice(this ServiceRegistry services,
         IConfiguration configuration,
@@ -50,6 +61,12 @@ public static class ConfigurationExtensions
         return services;
     }
 
+    /// <summary>
+    /// Configure GraphQL with a set of options for your Microservice
+    /// </summary>
+    /// <param name="services">The extended Services object, based on Lamar</param>
+    /// <param name="enableAuthentication">Toggles the use of Authentication</param>
+    /// <param name="enableRedisGateway">Toggles the use of a Redis-based gateway for subscriptions. If set to false an in-memory subscription is used</param>
     public static IRequestExecutorBuilder ConfigureGraphQL(this ServiceRegistry services, bool enableAuthentication, bool enableRedisGateway = true)
     {
         // Add a connection to our Redis server

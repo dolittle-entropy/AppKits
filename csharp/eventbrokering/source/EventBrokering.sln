@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Microservices", "00 - Microservices", "{5F75769E-F1B8-44DD-AA7D-27ABFA51B15A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample.Orders", "Sample.Orders", "{FBC5A8AD-CEAA-43A3-9C2B-965B380FF9CD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FBC5A8AD-CEAA-43A3-9C2B-965B380FF9CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Orders", "Microservices\Sample.Orders\Sample.Orders.csproj", "{AF697B8B-C69F-43E3-89EB-52F08A928D2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Orders", "Microservices\Samples\Sample.Orders.csproj", "{AF697B8B-C69F-43E3-89EB-52F08A928D2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

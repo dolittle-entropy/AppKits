@@ -37,5 +37,20 @@ namespace Sample.Orders.Orders
             }
             _log.Leave(this, $"Handle({commandName} {nameof(evt)}) finished");
         }
+
+        public async Task Handle(OrderDeleted evt, EventContext context)
+        {
+            var commandName = nameof(OrderDeleted);
+
+            if (await DeleteReadModel(order => order.Id == evt.OrderId))
+            {
+                await SendUserConfirmation(evt.issuedBy, evt, commandName);
+            }
+            else
+            {
+                await SendErrorToUser(evt.issuedBy, commandName, evt, commandName);
+            }
+            _log.Leave(this, $"Handle({commandName} {nameof(evt)}) finished");
+        }
     }
 }

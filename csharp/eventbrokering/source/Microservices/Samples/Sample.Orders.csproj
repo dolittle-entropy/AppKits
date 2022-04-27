@@ -5,6 +5,9 @@
 	<ImplicitUsings>enable</ImplicitUsings>
 	  <UserSecretsId>aspnet-Demo-9C343B54-7580-4ABD-BFDC-14D782C5E26A</UserSecretsId>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+  </ItemGroup>
 
   <ItemGroup>
 	<ProjectReference Include="..\..\Brokers\Brokers.csproj" />
