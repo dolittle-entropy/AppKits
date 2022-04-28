@@ -16,6 +16,9 @@
         // Products
         public const string Products = nameof(Products);
 
+        // Warehousing
+        public const string Warehouses = nameof(Warehouses);
+
         // Rejections
         public const string Rejections = nameof(Rejections);
 

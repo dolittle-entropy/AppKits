@@ -14,6 +14,10 @@ namespace Common.Rejections
         public string? RejectedBy { get; set; }
         public string? RejectionReason { get; set; }
         public object? FailingObject { get; set; }
+        public string? CreatedBy { get; set; }
+        public DateTime Created { get; set; }
+        public string? LastModifiedBy { get; set; }
+        public DateTime LastModified { get; set; }
         public bool? IsSynchronized { get; set; }
 
         public Rejection()

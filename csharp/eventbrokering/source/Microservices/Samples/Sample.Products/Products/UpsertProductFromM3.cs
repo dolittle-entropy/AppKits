@@ -1,13 +1,14 @@
 ﻿using Common.Commands;
 using Common.Rejections;
 
-namespace Sample.Orders.Orders
+namespace Sample.Products.Products
 {
-    public class CreateOrder : Rejection, ICommand<Order>
+    public class UpsertProductFromM3 : Rejection, ICommand<Product>
     {
         public Guid TenantId { get; set; }
+
         public string? IssuedBy { get; set; }
 
-        public Order? Payload { get; set; }
+        public Product? Payload { get; set; }
     }
 }

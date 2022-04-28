@@ -23,7 +23,7 @@ namespace Sample.Orders.Orders
                 .MinimumLength(4)
                 .MaximumLength(50);
 
-            RuleFor(x => x.Date)
+            RuleFor(x => x.Created)
                 .GreaterThanOrEqualTo(DateTime.UtcNow.AddYears(-3))
                 .LessThanOrEqualTo(DateTime.UtcNow.AddDays(1));
 

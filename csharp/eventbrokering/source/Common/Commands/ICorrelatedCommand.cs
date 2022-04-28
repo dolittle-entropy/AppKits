@@ -11,11 +11,6 @@ namespace Common.Commands
         string? PayloadType { get; set; }
 
         /// <summary>
-        /// User Id (from UserAccess) or email of the user that issued the command
-        /// </summary>
-        string? IssuedBy { get; set; }
-
-        /// <summary>
         /// The Correlation ID to be used towards an ERP Connector
         /// </summary>
         string? CorrelationId { get; set; }

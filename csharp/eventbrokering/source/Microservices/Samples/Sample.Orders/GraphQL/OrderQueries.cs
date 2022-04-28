@@ -23,6 +23,6 @@ namespace Sample.Orders.GraphQL
 
         [UseProjection, UseFiltering, UseSorting]
         public async Task<IEnumerable<Order>?> GetOrdersInRange(DateTime from, DateTime to)
-            => await _orders.GetAll(x => x.Date >= from && x.Date <= to);
+            => await _orders.GetAll(x => x.Created >= from && x.Created <= to);
     }
 }

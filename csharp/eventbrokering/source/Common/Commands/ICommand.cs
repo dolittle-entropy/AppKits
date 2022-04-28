@@ -12,6 +12,11 @@ namespace Common.Commands
         Guid TenantId { get; set; }
 
         /// <summary>
+        /// User or system that initiated the command
+        /// </summary>
+        string? IssuedBy { get; set; }
+
+        /// <summary>
         /// The payload of the command
         /// </summary>
         TEntity? Payload { get; }

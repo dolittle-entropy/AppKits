@@ -1,0 +1,4 @@
+﻿extend type Query{
+    Orders: [Order!]
+    @delegate(path: "workOrders(workOrderId: $fields:id)")
+}

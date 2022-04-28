@@ -31,9 +31,11 @@ namespace Sample.Orders.GraphQL
                 Payload = new Order
                 {
                     Id             = Guid.NewGuid(),
-                    Date           = DateTime.UtcNow,
                     CreatedBy      = issuedBy,
-                    LastModifiedBy = issuedBy,                    
+                    Created        = DateTime.UtcNow,
+                    LastModifiedBy = issuedBy,
+                    LastModified   = DateTime.UtcNow,
+                    IsSynchronized = false,
                 }
             };
             return await processor.Process(command, token);
