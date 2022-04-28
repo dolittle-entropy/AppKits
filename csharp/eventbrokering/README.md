@@ -222,38 +222,4 @@ Sample `.csproj` file from the Sample.Orders project:
 ----
 
 
-## Versions / Dependencies
-This template builds on the following components and versions
-
-| Concern              | Technology | Library      | Version | Comments | 
-| -------------------- | ---------- | ------------ | ------- | -------- |
-| Framework            | .Net       | -            | 6.0     | -        | 
-| Language             | C#         | -            | 10.0    | -        | 
-| Message Broker       | Kafka      | Confluent    | 1.8.2   | -        |
-| Frontend/API         | GraphQL    | HotChocolate | 12.7    | -        |
-| Inversion of Control | IoC        | Lamar        | 7.0.0   | -        | 
-| Logging              | -          | Serilog      | 2.10.0  | -        |
-
-## Installing
-Ensure that your .Net version is up to the required version in the table above, or higher, then simply apply the command: 
-
-```cmd
-> dotnet restore
-```
-
-To retrieve the referenced packages in the solution. You should then be able to run the sample using
-
-```cmd
-> dotnet run 
-```
-
-### GraphQL
-The entry point for the microservices leverage `GraphQL` in order to provide a two-way communication channel between the microservices and the front-end designer. 
-
-### Kafka broker
-We chose the Kafka broker for this template as it supports permanent retention time out of the box. 
-
-----
-
-
 
