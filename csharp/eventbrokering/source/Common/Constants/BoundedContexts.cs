@@ -5,5 +5,6 @@
         public const string RedisDatabaseName = "DOLITTLEDEMO";
         public const string Orders = "orders";
         public const string Warehouses = "warehouses";
+        public const string Products = "products";
     }
 }

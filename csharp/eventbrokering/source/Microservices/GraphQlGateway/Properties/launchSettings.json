@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "GraphQlGateway": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "API_KEY": "BigBad1337Banana"
+      },
+      "applicationUrl": "http://localhost:55549"
+    }
+  }
+}

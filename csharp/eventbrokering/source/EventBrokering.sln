@@ -25,6 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Products", "Microser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Warehousing", "Microservices\Samples\Sample.Warehousing\Sample.Warehousing.csproj", "{ED339F1B-C28B-47AC-B5CB-1FFF7ACC4737}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphQL Gateway", "GraphQL Gateway", "{22ADB5FC-5F02-4CF3-9486-17A2961C57BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQlGateway", "Microservices\GraphQlGateway\GraphQlGateway.csproj", "{4CA6665A-FB11-4725-B632-F45E75DDDC4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{ED339F1B-C28B-47AC-B5CB-1FFF7ACC4737}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED339F1B-C28B-47AC-B5CB-1FFF7ACC4737}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED339F1B-C28B-47AC-B5CB-1FFF7ACC4737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA6665A-FB11-4725-B632-F45E75DDDC4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA6665A-FB11-4725-B632-F45E75DDDC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA6665A-FB11-4725-B632-F45E75DDDC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA6665A-FB11-4725-B632-F45E75DDDC4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +75,8 @@ Global
 		{AF697B8B-C69F-43E3-89EB-52F08A928D2C} = {FBC5A8AD-CEAA-43A3-9C2B-965B380FF9CD}
 		{9E3A41E1-1D53-4324-ABE5-E689DAED129B} = {FBC5A8AD-CEAA-43A3-9C2B-965B380FF9CD}
 		{ED339F1B-C28B-47AC-B5CB-1FFF7ACC4737} = {FBC5A8AD-CEAA-43A3-9C2B-965B380FF9CD}
+		{22ADB5FC-5F02-4CF3-9486-17A2961C57BF} = {5F75769E-F1B8-44DD-AA7D-27ABFA51B15A}
+		{4CA6665A-FB11-4725-B632-F45E75DDDC4F} = {22ADB5FC-5F02-4CF3-9486-17A2961C57BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B202E9EC-6646-4868-9145-B1B9E99174A6}
